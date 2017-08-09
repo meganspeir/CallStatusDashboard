@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
 app.post('/voice', (req, res) => {
 
   // Generate a TwiML response
-  let twiml = new twilio.TwimlResponse();
+  let twiml = new twilio.twiml.VoiceResponse();
 
   // Talk in a robot voice over the phone.
   twiml.say('Call progress events are rad');
@@ -47,10 +47,10 @@ app.post('/voice', (req, res) => {
 });
 
 app.post('/events', (req, res) => {
-  let to = req.body.To;
-  let fromNumber = req.body.From;
+  let to = req.body.to;
+  let fromNumber = req.body.from;
   let callStatus = req.body.CallStatus;
-  let callSid = req.body.CallSid;
+  let callSid = req.body.callSid;
   console.log(fromNumber)
 
   io.emit('status update', { to, fromNumber, callStatus, callSid });
