@@ -1,9 +1,9 @@
 "use strict";
 
 const twilio = require('twilio');
-const client = twilio();
+const client = new twilio();
 
-client.makeCall({
+client.calls.create({
   url: '',
   to: '',
   from: '',
